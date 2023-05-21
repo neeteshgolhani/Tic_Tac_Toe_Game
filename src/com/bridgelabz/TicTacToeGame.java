@@ -85,6 +85,20 @@ public class TicTacToeGame {
     }
 
     public void makeComputerMove() {
+        // Check if the computer can win
+        for (int i = 1; i < board.length; i++) {
+            if (board[i] == ' ') {
+                board[i] = computerSymbol;
+                if (checkWin(computerSymbol)) {
+                    System.out.println("Computer moved to position " + i);
+                    return;
+                }
+                // Undo the move if it doesn't lead to a win
+                board[i] = ' ';
+            }
+        }
+
+        // If the computer can't win, make a random move
         int position = getRandomAvailablePosition();
         makeMove(position, computerSymbol);
         System.out.println("Computer moved to position " + position);
