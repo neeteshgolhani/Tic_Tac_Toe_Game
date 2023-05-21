@@ -185,51 +185,52 @@ public class TicTacToeGame {
 
     public void playGame() {
         Scanner scanner = new Scanner(System.in);
-
-        while (true) {
-            showBoard();
-
-            if (isPlayerTurn()) {
-                // Player's turn
-                while (!makePlayerMove()) {
-                    // Keep asking for a valid player move
-                }
-                if (checkWin(playerSymbol)) {
-                    showBoard();
-                    System.out.println("Congratulations! You won!");
-                    break; // Exit the game loop
-                } else if (checkDraw()) {
-                    showBoard();
-                    System.out.println("It's a draw!");
-                    break; // Exit the game loop
-                }
-            } else {
-                // Computer's turn
-                makeComputerMove();
-                if (checkWin(computerSymbol)) {
-                    showBoard();
-                    System.out.println("You lost! Better luck next time.");
-                    break; // Exit the game loop
-                } else if (checkDraw()) {
-                    showBoard();
-                    System.out.println("It's a draw!");
-                    break; // Exit the game loop
-                }
-            }
-
-            // Switch turns
-            isPlayerTurn = !isPlayerTurn;
-        }
-
-        // Ask if the player wants to play again
-        System.out.print("Do you want to play again? (Y/N): ");
-        String playAgainInput = scanner.nextLine().toUpperCase();
-        if (playAgainInput.equals("Y")) {
-            // Restart the game
+        do {
             initializeBoard();
             doToss();
-            playGame();
-        } else {
+
+            while (true) {
+                showBoard();
+
+                if (isPlayerTurn()) {
+                    // Player's turn
+                    while (!makePlayerMove()) {
+                        // Keep asking for a valid player move
+                    }
+                    if (checkWin(playerSymbol)) {
+                        showBoard();
+                        System.out.println("Congratulations! You won!");
+                        break; // Exit the game loop
+                    } else if (checkDraw()) {
+                        showBoard();
+                        System.out.println("It's a draw!");
+                        break; // Exit the game loop
+                    }
+                } else {
+                    // Computer's turn
+                    makeComputerMove();
+                    if (checkWin(computerSymbol)) {
+                        showBoard();
+                        System.out.println("You lost! Better luck next time.");
+                        break; // Exit the game loop
+                    } else if (checkDraw()) {
+                        showBoard();
+                        System.out.println("It's a draw!");
+                        break; // Exit the game loop
+                    }
+                }
+
+                // Switch turns
+                isPlayerTurn = !isPlayerTurn;
+            }
+
+            // Ask if the player wants to play another game
+            System.out.print("Do you want to play another game? (Y/N): ");
+            String playAgainInput = scanner.nextLine().toUpperCase();
+            if (!playAgainInput.equals("Y")) {
+                break; // Exit the game loop
+            }
+        } while (true);
             System.out.println("Thank you for playing!");
         }
     }
