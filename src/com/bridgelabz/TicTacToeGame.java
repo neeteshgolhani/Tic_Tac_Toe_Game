@@ -111,7 +111,7 @@ public class TicTacToeGame {
                 board[i] = ' ';
             }
         }
-// Check if a corner position is available
+        // Check if a corner position is available
         int[] corners = {1, 3, 7, 9};
         for (int corner : corners) {
             if (board[corner] == ' ') {
@@ -121,11 +121,30 @@ public class TicTacToeGame {
             }
         }
 
-        // If no winning move, blocking move, or corner move is found, make a random move
+        // Check if the center position is available
+        if (board[5] == ' ') {
+            makeMove(5, computerSymbol);
+            System.out.println("Computer moved to position 5");
+            return;
+        }
+
+        // Check if any side position is available
+        int[] sides = {2, 4, 6, 8};
+        for (int side : sides) {
+            if (board[side] == ' ') {
+                makeMove(side, computerSymbol);
+                System.out.println("Computer moved to position " + side);
+                return;
+            }
+        }
+
+        // If no winning move, blocking move, corner move, center move, or side move is found,
+        // make a random move
         int position = getRandomAvailablePosition();
         makeMove(position, computerSymbol);
         System.out.println("Computer moved to position " + position);
     }
+
     private int getRandomAvailablePosition() {
         Random random = new Random();
         int position;
