@@ -1,7 +1,9 @@
 package com.bridgelabz;
-
+import java.util.Scanner;
 public class TicTacToeGame {
     private char[] board;
+    private char playerSymbol;
+    private char computerSymbol;
 
     public TicTacToeGame() {
         board = new char[10];
@@ -43,5 +45,28 @@ public class TicTacToeGame {
         board[position] = symbol;
         // Move successful, return true
         return true;
+    }
+    public void choosePlayerSymbol() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Choose X or O: ");
+        String input = scanner.nextLine().toUpperCase();
+        char symbol = input.charAt(0);
+        if (symbol == 'X') {
+            // Player chose X
+            playerSymbol = 'X';
+            computerSymbol = 'O';
+        } else {
+            // Player chose O
+            playerSymbol = 'O';
+            computerSymbol = 'X';
+        }
+    }
+
+    public char getPlayerSymbol() {
+        return playerSymbol;
+    }
+
+    public char getComputerSymbol() {
+        return computerSymbol;
     }
 }

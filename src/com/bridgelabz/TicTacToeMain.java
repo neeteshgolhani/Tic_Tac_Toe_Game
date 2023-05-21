@@ -5,11 +5,17 @@ public class TicTacToeMain {
         TicTacToeGame game = new TicTacToeGame();
         game.displayBoard();
 
-        // Make moves and display the updated board
-        game.makeMove(1, 'X');
-        game.makeMove(5, 'X');
-        game.makeMove(2, 'X');
-        game.makeMove(9, 'O');
+        game.choosePlayerSymbol();
+
+        char playerSymbol = game.getPlayerSymbol();
+        char computerSymbol = game.getComputerSymbol();
+        System.out.println("Player symbol: " + playerSymbol);
+        System.out.println("Computer symbol: " + computerSymbol);
+//        // Make moves and display the updated board
+//        game.makeMove(1, 'X');
+//        game.makeMove(5, 'X');
+//        game.makeMove(2, 'X');
+//        game.makeMove(9, 'O');
         game.displayBoard();
 
         // Check if the board is full
