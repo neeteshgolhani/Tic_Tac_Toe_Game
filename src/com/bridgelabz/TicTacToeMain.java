@@ -17,7 +17,8 @@ public class TicTacToeMain {
 //        game.makeMove(2, 'X');
 //        game.makeMove(9, 'O');
         game.displayBoard();
-
+        // Display the board
+        game.showBoard();
         // Check if the board is full
         boolean isFull = game.isBoardFull();
         System.out.println("Board is full: " + isFull);

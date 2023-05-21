@@ -46,6 +46,7 @@ public class TicTacToeGame {
         // Move successful, return true
         return true;
     }
+
     public void choosePlayerSymbol() {
         Scanner scanner = new Scanner(System.in);
         System.out.print("Choose X or O: ");
@@ -68,5 +69,10 @@ public class TicTacToeGame {
 
     public char getComputerSymbol() {
         return computerSymbol;
+    }
+
+    public void showBoard() {
+        System.out.println("Current Board:");
+        displayBoard();
     }
 }
