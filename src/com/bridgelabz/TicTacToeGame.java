@@ -76,6 +76,18 @@ public class TicTacToeGame {
         displayBoard();
     }
     public void makePlayerMove() {
-
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter your move (1-9): ");
+        int position = scanner.nextInt();
+        if (position < 1 || position > 9) {
+            System.out.println("Invalid move. Please enter a position between 1 and 9.");
+            makePlayerMove(); // Recursively ask for input until a valid move is made
+        } else if (board[position] != ' ') {
+            System.out.println("Invalid move. The selected position is not available.");
+            makePlayerMove(); // Recursively ask for input until a valid move is made
+        } else {
+            makeMove(position, playerSymbol);
+            System.out.println("Player moved to position " + position);
+        }
     }
 }
