@@ -11,21 +11,23 @@ public class TicTacToeMain {
         char computerSymbol = game.getComputerSymbol();
         System.out.println("Player symbol: " + playerSymbol);
         System.out.println("Computer symbol: " + computerSymbol);
-//        // Make moves and display the updated board
-//        game.makeMove(1, 'X');
-//        game.makeMove(5, 'X');
-//        game.makeMove(2, 'X');
-//        game.makeMove(9, 'O');
+
+        // Perform toss
+        game.doToss();
 
         // Display the board
         game.showBoard();
 
-        // Player makes a move
-        game.makePlayerMove();
+        // Player or computer makes a move based on the toss result
+        if (game.isPlayerTurn()) {
+            game.makePlayerMove();
+        } else {
+            // Make computer's move
+            // Implement the logic for the computer's move
+        }
 
         // Display the updated board
         game.showBoard();
-
 
         // Check if the board is full
         boolean isFull = game.isBoardFull();

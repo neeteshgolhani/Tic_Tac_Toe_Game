@@ -1,13 +1,17 @@
 package com.bridgelabz;
+import java.util.Random;
 import java.util.Scanner;
 public class TicTacToeGame {
     private char[] board;
     private char playerSymbol;
     private char computerSymbol;
+    private boolean isPlayerTurn;
 
     public TicTacToeGame() {
         board = new char[10];
         initializeBoard();
+
+        isPlayerTurn = false; // Default value, will be determined by the toss
     }
 
     private void initializeBoard() {
@@ -88,6 +92,23 @@ public class TicTacToeGame {
         } else {
             makeMove(position, playerSymbol);
             System.out.println("Player moved to position " + position);
+            isPlayerTurn = false; // Player's turn is over
         }
+    }
+
+    public void doToss() {
+        Random random = new Random();
+        int tossResult = random.nextInt(2); // 0 for heads, 1 for tails
+        if (tossResult == 0) {
+            isPlayerTurn = true;
+            System.out.println("Player won the toss and starts first!");
+        } else {
+            isPlayerTurn = false;
+            System.out.println("Computer won the toss and starts first!");
+        }
+    }
+
+    public boolean isPlayerTurn() {
+        return isPlayerTurn;
     }
 }
