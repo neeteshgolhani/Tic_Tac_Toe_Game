@@ -75,4 +75,7 @@ public class TicTacToeGame {
         System.out.println("Current Board:");
         displayBoard();
     }
+    public void makePlayerMove() {
+
+    }
 }
