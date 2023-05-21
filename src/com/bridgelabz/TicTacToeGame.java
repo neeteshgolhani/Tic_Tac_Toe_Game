@@ -98,7 +98,21 @@ public class TicTacToeGame {
             }
         }
 
-        // If the computer can't win, make a random move
+        // Check if the player can win and block them
+        for (int i = 1; i < board.length; i++) {
+            if (board[i] == ' ') {
+                board[i] = playerSymbol;
+                if (checkWin(playerSymbol)) {
+                    board[i] = computerSymbol;
+                    System.out.println("Computer moved to position " + i);
+                    return;
+                }
+                // Undo the move if it doesn't block the player from winning
+                board[i] = ' ';
+            }
+        }
+
+        // If no winning move or blocking move is found, make a random move
         int position = getRandomAvailablePosition();
         makeMove(position, computerSymbol);
         System.out.println("Computer moved to position " + position);
